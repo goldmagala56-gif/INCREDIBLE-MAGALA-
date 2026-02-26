@@ -1,0 +1,42 @@
+<div class="container">
+  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspection Requests</title>
+</head>
+<body>
+    <h2>Inspection Requests</h2>
+
+    {% for item in data %}
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <h3>{{ item.title }}</h3>
+            <p>Name: {{ item.buyer_name }}</p>
+            <p>Phone: {{ item.buyer_phone }}</p>
+            <p>Date: {{ item.preferred_date }}</p>
+            <p>{{ item.message }}</p>
+        </div>
+    {% endfor %}<br><br>
+<button>
+    <a href="/admin">Back to Admin</a>
+    </button>
+    <style>
+      h2 {
+        color:blue;
+        font: Arial;
+        background: white;
+        boarder: none;
+      }
+      body {
+        background-color: orange;
+        padding:30px;
+        Text-align: center;
+        color: white;
+      }
+      button {
+        background-color: lightgreen;
+        text: white;
+      }
+    </style>
+</body>
+</html>

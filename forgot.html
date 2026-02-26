@@ -1,0 +1,41 @@
+<div class="container">
+  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgot Password</title>
+    <style>
+            h2 {
+        color:blue;
+        font: Arial;
+        background: white;
+        boarder: none;
+      }
+      body {
+        background-color: orange;
+        padding:30px;
+        Text-align: center;
+        color: white;
+      }
+      button {
+        background-color: lightgreen;
+        text: white;
+      }
+    </style>
+</head>
+<body>
+    <h2>Forgot Password</h2>
+
+    <form method="post">
+        <input name="username" placeholder="Your username" required><br><br>
+        <button type="submit">Generate Reset Link</button>
+    </form>
+
+    {% if reset_link %}
+        <p>Reset link (demo):</p>
+       <button> <a href="Reset_link"> Reset_link</a></button><br><br>
+    {% endif %}<br><br>
+     <button>
+    <a href="/login">Back to Login</a></button>
+</body>
+</html>

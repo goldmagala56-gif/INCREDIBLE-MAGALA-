@@ -1,0 +1,60 @@
+
+  <button>
+    <a href="/Home">Home</a>
+    </button>
+    <button>
+    <a href="/listings">Listings</a>
+    </button>
+    <button>
+    <a href="/add">Add Listing</a>
+    </button>
+    <button>
+    <a href="/login">Login</a>
+    </button>
+    <style>
+            h2 {
+        color:blue;
+        font: Arial;
+        background: white;
+        boarder: none;
+      }
+      body {
+        background-color: orange;
+        padding:30px;
+        Text-align: center;
+        color: white;
+      }
+      button {
+        background-color: lightgreen;
+        text: white;
+      }
+    </style>
+<!DOCTYPE html>
+<html>
+  <h1>
+      <header>ADMIN DASHBOARD</header>
+      </h1>
+<body>
+    <h2>Admin – Listings Control</h2>
+
+    {% for item in items %}
+        <div style="border:1px solid #000; padding:10px; margin:10px;">
+            <h3>{{ item.title }}</h3>
+            <p>Seller: {{ item.seller_name }}</p>
+
+            {% if not item.verified %}
+                <a href="/verify/{{ item.id }}">✔ Verify</a>
+            {% else %}
+                <strong>Verified</strong>
+            {% endif %}
+
+            {% if not item.featured %}
+                | <a href="/feature/{{ item.id }}">⭐ Feature</a>
+            {% else %}
+                | <strong>Featured</strong>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
+<Visit:/Admin></Visit:>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1>LISTINGS</h1>
+    <style>
+    h1 {
+      color: white;
+      background: orange;
+    }
+            h2 {
+        color: orange;
+        font: Arial;
+        background: gray;
+        boarder: none;
+      }
+      body {
+        background-color: purple;
+        padding:30px;
+        Text-align: center;
+        color: white;
+      }
+      button {
+        background-color: lightgreen;
+        text: white;
+      }
+    </style>
+</head>
+<body>
+    <h2>Available Listings</h2>
+
+    {% for item in items %}
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <h3>{{ item.title }}</h3>
+            <p>Category: {{ item.category }}</p>
+            <p>Price: {{ item.pr7ice }}</p>
+            <p>Location: {{ item.location }}</p>
+            {% if not item.featured %}
+    <a class="button secondary" href="/upgrade/{{ item.id }}">
+        ⭐ Feature this listing
+    </a
+{% endif %}
+<iframe
+    width="100%"
+    height="300"
+    style="border:0; margin-top:30px;"
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps?q={{ item.location | replace(' ', '+') }}&output=embed">
+</iframe>
+<div class="card">
+    {% if item.featured %}
+        <span class="badge featured">⭐ Featured</span>
+    {% endif %}
+
+    {% if item.verified %}
+        <span class="badge verified">✔ Verified</span>
+    {% endif %}
+
+    <h3>{{ item.title }}</h3>
+    <p><strong>Category:</strong> {{ item.category }}</p>
+    <p><strong>Price:</strong> {{ item.price }}</p>
+    <p><strong>Location:</strong> {{ item.location }}</p>
+    <p>{{ item.description }}</p><br>
+    {% if not item.featured %}
+    <a class="button secondary" href="/upgrade/{{ item.id }}">
+        ⭐ Feature this listing
+    </a>
+{% endif %}<br><br>
+
+    <a class="button" href="/inspect/{{ item.id }}">📅 Book Inspection</a>
+    <a class="button secondary"
+       href="https://wa.me/256700000000?text=I'm interested in {{ item.title }}">
+       💬 WhatsApp
+    </a>
+
+    <iframe
+        width="100%"
+        height="220"
+        style="border:0; margin-top:15px;"
+        loading="lazy"
+        src="https://www.google.com/maps?q={{ item.location | replace(' ', '+') }}&output=embed">
+    </iframe>
+</div>
+
+            {% if item.verified %}
+                <strong style="color:green;">✔ Verified</strong>
+            {% else %}
+                <strong style="color:red;">Not Verified</strong>
+            {% endif %}
+        </div>
+    {% endfor %}
+<br><br>
+<button>
+  <a href="/add-listings">add-listings</a><br>
+  </button><br><br>
+  <button>
+  <a href="/home">Back Home</a>
+  </button>
+</body>
+</html>
